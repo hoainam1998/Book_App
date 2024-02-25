@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryColumn, ManyToOne } from 'typeorm';
-import Category from './category.entity';
+import Category from '../entities/category.entity';
 
 @Entity()
 export default class Books {
