@@ -7,6 +7,7 @@ import BookModule from './book/book.module';
 import BookController from './book/book.controller';
 import BookService from './book/book.service';
 import ResponseMiddleware from './middleware/response/response.middleware';
+import Book from './book/book.entity';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import ResponseMiddleware from './middleware/response/response.middleware';
       username: 'root',
       password: '',
       database: 'books',
+      entities: [Book],
     }),
     BookModule
   ],
