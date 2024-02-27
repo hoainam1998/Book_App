@@ -9,7 +9,4 @@ export default class Category {
 
   @Column({ type: 'varchar', length: 200 })
   name: string;
-
-  @OneToMany(() => Book, (book) => book.category)
-  book: Book[]
 }

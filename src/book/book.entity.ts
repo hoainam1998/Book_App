@@ -20,7 +20,4 @@ export default class Books {
 
   @Column()
   republish_time: number;
-
-  @ManyToOne(() => Category, category => category.book)
-  category: Category;
 }
