@@ -1,34 +1,31 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+// import { TypeOrmModule } from '@nestjs/typeorm';
 import BookModule from './book/book.module';
 import BookController from './book/book.controller';
 import BookService from './book/book.service';
 import ResponseMiddleware from './middleware/response/response.middleware';
-import Book from './book/book.entity';
+// import Book from './book/book.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'books',
-      entities: [Book],
-    }),
-    BookModule
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: 'localhost',
+    //   port: 3306,
+    //   username: 'root',
+    //   password: '',
+    //   database: 'books',
+    //   entities: [Book],
+    // }),
+    BookModule,
   ],
   controllers: [AppController, BookController],
   providers: [AppService, BookService],
 })
 export class AppModule implements NestModule {
-
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(ResponseMiddleware)
-      .forRoutes('book');
+    consumer.apply(ResponseMiddleware).forRoutes('book');
   }
 }

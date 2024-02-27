@@ -1,13 +1,20 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Controller,
+  ForbiddenException,
+  Get,
+  UseFilters,
+} from '@nestjs/common';
 import IBook from './book.interface';
 import BookService from './book.service';
+import HttpExceptionFilter from '../filter/http/http.filter';
 
 @Controller('book')
+@UseFilters(HttpExceptionFilter)
 export default class BookController {
   constructor(private bookService: BookService) {}
 
   @Get('all')
   findAll(): Promise<IBook[]> {
-    return this.bookService.findBook();
+    throw new ForbiddenException('You have not permission!');
   }
 }
