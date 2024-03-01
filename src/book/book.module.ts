@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import BookController from './book.controller';
 import BookService from './book.service';
-// import { TypeOrmModule } from '@nestjs/typeorm';
-// import Book from './book.entity';
+import BookSchema from './book.schema';
 
 @Module({
-  // imports: [TypeOrmModule.forFeature([Book])],
+  imports: [TypeOrmModule.forFeature([BookSchema])],
   controllers: [BookController],
   providers: [BookService],
-  // exports: [TypeOrmModule],
+  exports: [TypeOrmModule],
 })
 export default class BookModule {}

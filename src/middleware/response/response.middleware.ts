@@ -5,6 +5,6 @@ export default function logger(
   res: Response,
   next: NextFunction,
 ) {
-  console.log(`Request...`, res);
+  console.log(`Request...`);
   next();
 }
