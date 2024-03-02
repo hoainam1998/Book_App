@@ -1,5 +1,5 @@
 export default interface IBook {
-  book_id: number;
+  book_id: string;
   name: string;
   image: string;
   pdf: string;

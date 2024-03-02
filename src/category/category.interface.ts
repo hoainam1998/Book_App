@@ -1,4 +1,4 @@
 export default interface ICategory {
-  category_id: number;
+  category_id: string;
   name: string;
 }

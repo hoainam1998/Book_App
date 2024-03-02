@@ -1,5 +1,6 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserService } from './user/user.service';
 import CategoryModule from './category/category.module';
 import CategoryService from './category/category.service';
 import CategoryController from './category/category.controller';
@@ -26,7 +27,7 @@ import CategorySchema from './category/category.schema';
     CategoryModule,
   ],
   controllers: [BookController, CategoryController],
-  providers: [BookService, CategoryService],
+  providers: [BookService, CategoryService, UserService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

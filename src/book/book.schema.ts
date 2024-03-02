@@ -5,7 +5,8 @@ const BookSchema = new EntitySchema<IBook>({
   name: 'books',
   columns: {
     book_id: {
-      type: Number,
+      type: 'varchar',
+      length: 20,
       primary: true,
     },
     name: {
@@ -21,7 +22,8 @@ const BookSchema = new EntitySchema<IBook>({
       type: Number
     },
     category_id: {
-      type: Number,
+      type: 'varchar',
+      length: 20,
       unique: true,
     }
   },
@@ -34,8 +36,8 @@ const BookSchema = new EntitySchema<IBook>({
       },
       type: 'many-to-one',
       target: 'categories'
-    }
-  }
+    },
+  },
 });
 
 export default BookSchema;

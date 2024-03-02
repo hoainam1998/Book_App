@@ -5,7 +5,8 @@ const CategorySchema = new EntitySchema<ICategory>({
   name: 'categories',
   columns: {
     category_id: {
-      type: Number,
+      type: 'varchar',
+      length: 20,
       primary: true,
     },
     name: {
