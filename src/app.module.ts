@@ -1,5 +1,6 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import CategoryModule from './category/category.module';
 import CategoryService from './category/category.service';
 import CategoryController from './category/category.controller';
 import BookModule from './book/book.module';
@@ -7,6 +8,7 @@ import BookController from './book/book.controller';
 import BookService from './book/book.service';
 import ResponseMiddleware from './middleware/response/response.middleware';
 import BookSchema from './book/book.schema';
+import CategorySchema from './category/category.schema';
 
 @Module({
   imports: [
@@ -17,10 +19,11 @@ import BookSchema from './book/book.schema';
       username: 'root',
       password: '',
       database: 'books',
-      entities: [BookSchema],
+      entities: [BookSchema, CategorySchema],
       synchronize: true,
     }),
     BookModule,
+    CategoryModule,
   ],
   controllers: [BookController, CategoryController],
   providers: [BookService, CategoryService],

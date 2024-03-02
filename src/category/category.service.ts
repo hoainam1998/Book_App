@@ -6,5 +6,9 @@ import ICategory from './category.interface';
 
 @Injectable()
 export default class CategoryService {
-  constructor(@InjectRepository(CategorySchema) categorySchema: Repository<ICategory>) {}
+  constructor(@InjectRepository(CategorySchema) private categorySchema: Repository<ICategory>) {}
+
+  findAll(): Promise<ICategory[]> {
+    return this.categorySchema.find();
+  }
 }

@@ -14,4 +14,5 @@ const CategorySchema = new EntitySchema<ICategory>({
     },
   },
 });
+
 export default CategorySchema;

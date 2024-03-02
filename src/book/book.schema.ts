@@ -20,7 +20,22 @@ const BookSchema = new EntitySchema<IBook>({
     republish_time: {
       type: Number
     },
+    category_id: {
+      type: Number,
+      unique: true,
+    }
   },
+  relations: {
+    category_id: {
+      joinColumn: {
+        name: 'category_id',
+        referencedColumnName: 'category_id',
+        foreignKeyConstraintName: 'FK_CATEGORY_BOOK',
+      },
+      type: 'many-to-one',
+      target: 'categories'
+    }
+  }
 });
 
 export default BookSchema;

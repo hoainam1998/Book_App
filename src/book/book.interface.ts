@@ -5,4 +5,5 @@ export default interface IBook {
   pdf: string;
   published_day: number;
   republish_time: number;
+  category_id: number;
 }
