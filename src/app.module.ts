@@ -1,6 +1,10 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserService } from './user/user.service';
+import BookReaderController from './book-reader/book-reader.controller';
+import BookReaderModule from './book-reader/book-reader.module';
+import BookReaderService from './book-reader/book-reader.service';
+import UserService from './user/user.service';
+import UserModule from './user/user.module';
 import CategoryModule from './category/category.module';
 import CategoryService from './category/category.service';
 import CategoryController from './category/category.controller';
@@ -8,8 +12,10 @@ import BookModule from './book/book.module';
 import BookController from './book/book.controller';
 import BookService from './book/book.service';
 import ResponseMiddleware from './middleware/response/response.middleware';
-import BookSchema from './book/book.schema';
-import CategorySchema from './category/category.schema';
+import BookEntity from './book/book.entity';
+import CategoryEntity from './category/category.entity';
+import UserEntity from './user/user.entity';
+import BookReaderEntity from './book-reader/book-reader.entity';
 
 @Module({
   imports: [
@@ -20,14 +26,16 @@ import CategorySchema from './category/category.schema';
       username: 'root',
       password: '',
       database: 'books',
-      entities: [BookSchema, CategorySchema],
+      entities: [BookEntity, CategoryEntity, UserEntity, BookReaderEntity],
       synchronize: true,
     }),
     BookModule,
     CategoryModule,
+    UserModule,
+    BookReaderModule,
   ],
-  controllers: [BookController, CategoryController],
-  providers: [BookService, CategoryService, UserService],
+  controllers: [BookController, CategoryController, BookReaderController],
+  providers: [BookService, CategoryService, UserService, BookReaderService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
