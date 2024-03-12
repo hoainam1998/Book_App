@@ -6,7 +6,9 @@ import IUser from './user.interface';
 
 @Injectable()
 export default class UserService {
-  constructor(@InjectRepository(UserSchema) private userRepository: Repository<IUser>) {}
+  constructor(
+    @InjectRepository(UserSchema) private userRepository: Repository<IUser>,
+  ) {}
 
   findAll(): Promise<IUser[]> {
     return this.userRepository.find();

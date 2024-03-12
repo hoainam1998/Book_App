@@ -6,7 +6,10 @@ import IBookReader from './book-reader.interface';
 
 @Injectable()
 export default class BookReaderService {
-  constructor(@InjectRepository(BookReaderSchema) private bookReadeRepository: Repository<IBookReader>) {}
+  constructor(
+    @InjectRepository(BookReaderSchema)
+    private bookReadeRepository: Repository<IBookReader>,
+  ) {}
 
   findAll(): Promise<IBookReader[]> {
     return this.bookReadeRepository.find();

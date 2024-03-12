@@ -1,21 +1,35 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import BookReaderController from './book-reader/book-reader.controller';
-import BookReaderModule from './book-reader/book-reader.module';
-import BookReaderService from './book-reader/book-reader.service';
-import UserService from './user/user.service';
-import UserModule from './user/user.module';
-import CategoryModule from './category/category.module';
-import CategoryService from './category/category.service';
-import CategoryController from './category/category.controller';
-import BookModule from './book/book.module';
-import BookController from './book/book.controller';
-import BookService from './book/book.service';
+
+// Controller
+import AuthorController from './modules/author/author.controller';
+import BookReaderController from './modules/book-reader/book-reader.controller';
+import CategoryController from './modules/category/category.controller';
+import BookController from './modules/book/book.controller';
+import AuthorBookController from './modules/author-book/author-book.controller';
+// Module
+import AuthorModule from './modules/author/author.module';
+import BookReaderModule from './modules/book-reader/book-reader.module';
+import UserModule from './modules/user/user.module';
+import CategoryModule from './modules/category/category.module';
+import BookModule from './modules/book/book.module';
+import AuthorBookModule from './modules/author-book/author-book.module';
+// Service
+import AuthorService from './modules/author/author.service';
+import BookReaderService from './modules/book-reader/book-reader.service';
+import UserService from './modules/user/user.service';
+import CategoryService from './modules/category/category.service';
+import BookService from './modules/book/book.service';
+import AuthorBookService from './modules/author-book/author-book.service';
+// Database entity;
+import BookEntity from './modules/book/book.entity';
+import CategoryEntity from './modules/category/category.entity';
+import UserEntity from './modules/user/user.entity';
+import BookReaderEntity from './modules/book-reader/book-reader.entity';
+import AuthorEntity from './modules/author/author.entity';
+import AuthorBookEntity from './modules/author-book/author-book.entity';
+// Middleware
 import ResponseMiddleware from './middleware/response/response.middleware';
-import BookEntity from './book/book.entity';
-import CategoryEntity from './category/category.entity';
-import UserEntity from './user/user.entity';
-import BookReaderEntity from './book-reader/book-reader.entity';
 
 @Module({
   imports: [
@@ -24,18 +38,40 @@ import BookReaderEntity from './book-reader/book-reader.entity';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '',
+      password: 'Namdang@2006',
       database: 'books',
-      entities: [BookEntity, CategoryEntity, UserEntity, BookReaderEntity],
+      entities: [
+        BookEntity,
+        CategoryEntity,
+        UserEntity,
+        BookReaderEntity,
+        AuthorEntity,
+        AuthorBookEntity,
+      ],
       synchronize: true,
     }),
     BookModule,
     CategoryModule,
     UserModule,
     BookReaderModule,
+    AuthorModule,
+    AuthorBookModule,
   ],
-  controllers: [BookController, CategoryController, BookReaderController],
-  providers: [BookService, CategoryService, UserService, BookReaderService],
+  controllers: [
+    BookController,
+    CategoryController,
+    BookReaderController,
+    AuthorController,
+    AuthorBookController,
+  ],
+  providers: [
+    BookService,
+    CategoryService,
+    UserService,
+    BookReaderService,
+    AuthorService,
+    AuthorBookService,
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

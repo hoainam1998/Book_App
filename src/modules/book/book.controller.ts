@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import IBook from './book.interface';
 import BookService from './book.service';
-import HttpExceptionFilter from '../filter/http/http.filter';
+import HttpExceptionFilter from '../../filter/http/http.filter';
 
 @Controller('book')
 //  @UseFilters(HttpExceptionFilter)

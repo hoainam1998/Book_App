@@ -6,7 +6,9 @@ import IBook from './book.interface';
 
 @Injectable()
 export default class BookService {
-  constructor(@InjectRepository(BookSchema) private bookRepository: Repository<IBook>) {}
+  constructor(
+    @InjectRepository(BookSchema) private bookRepository: Repository<IBook>,
+  ) {}
 
   findBook(): Promise<IBook[]> {
     return this.bookRepository.find();
