@@ -1,5 +1,4 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 // Controller
 import AuthorController from './modules/author/author.controller';
@@ -8,6 +7,9 @@ import CategoryController from './modules/category/category.controller';
 import BookController from './modules/book/book.controller';
 import AuthorBookController from './modules/author-book/author-book.controller';
 // Module
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import DatabaseModule from './modules/database/database.module';
 import AuthorModule from './modules/author/author.module';
 import BookReaderModule from './modules/book-reader/book-reader.module';
 import UserModule from './modules/user/user.module';
@@ -33,6 +35,7 @@ import ResponseMiddleware from './middleware/response/response.middleware';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -56,6 +59,7 @@ import ResponseMiddleware from './middleware/response/response.middleware';
     BookReaderModule,
     AuthorModule,
     AuthorBookModule,
+    DatabaseModule,
   ],
   controllers: [
     BookController,
