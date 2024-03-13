@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { InsertResult, Repository } from 'typeorm';
 import CategorySchema from './category.entity';
 import ICategory from './category.interface';
 
@@ -13,5 +13,13 @@ export default class CategoryService {
 
   findAll(): Promise<ICategory[]> {
     return this.categorySchema.find();
+  }
+
+  create(category: ICategory): Promise<InsertResult> {
+    return this.categorySchema
+      .createQueryBuilder()
+      .insert()
+      .values(category)
+      .execute();
   }
 }

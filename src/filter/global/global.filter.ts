@@ -22,6 +22,7 @@ export default class GlobalFilter implements ExceptionFilter {
 
     const responseBody = {
       statusCode: httpStatus,
+      messages: (exception as HttpException).getResponse()['message'],
       path: httpAdapter.getRequestUrl(ctx.getRequest()),
     };
 
