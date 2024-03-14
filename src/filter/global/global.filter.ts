@@ -20,9 +20,13 @@ export default class GlobalFilter implements ExceptionFilter {
         ? exception.getStatus()
         : HttpStatus.INTERNAL_SERVER_ERROR;
 
+    console.log(exception['sqlMessage']);
     const responseBody = {
       statusCode: httpStatus,
-      messages: (exception as HttpException).getResponse()['message'],
+      messages:
+        exception instanceof HttpException
+          ? exception.getResponse()['message']
+          : exception['sqlMessage'],
       path: httpAdapter.getRequestUrl(ctx.getRequest()),
     };
 
