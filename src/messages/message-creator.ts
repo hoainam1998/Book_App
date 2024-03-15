@@ -5,7 +5,7 @@ export default class MessageCreator extends Messages {
   private name: string;
   private propertyName: string;
 
-  constructor(name: string, propertyName: string) {
+  constructor(name: string, propertyName: string = '') {
     super();
     this.name = name;
     this.propertyName = propertyName;
@@ -18,6 +18,6 @@ export default class MessageCreator extends Messages {
   }
 
   getMessageByEvent(action: Actions): string {
-    return this.ACTIONS_MESSAGE.get(action).replace('<name>', this.name);
+    return this.ACTIONS_MESSAGE.get(action).replace(/<name>/g, this.name);
   }
 }

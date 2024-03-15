@@ -1,3 +1,5 @@
 export const enum Actions {
   ADD_SUCCESS = 'ADD_SUCCESS',
+  DELETE_SUCCESS = 'DELETE_SUCCESS',
+  UPDATE_SUCCESS = 'UPDATE_SUCCESS',
 }

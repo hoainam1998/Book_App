@@ -8,7 +8,6 @@ export default class UserController {
 
   @Get('all')
   findAll(): Promise<IUser[]> {
-    console.log(this.userService.findAll());
     return this.userService.findAll();
   }
 }

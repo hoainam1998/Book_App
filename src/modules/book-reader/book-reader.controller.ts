@@ -8,7 +8,6 @@ export default class BookReaderController {
 
   @Get('all')
   findAll(): Promise<IBookReader[]> {
-    console.log(this.bookReaderService.findAll());
     return this.bookReaderService.findAll();
   }
 }

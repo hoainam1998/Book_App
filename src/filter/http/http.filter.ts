@@ -17,7 +17,7 @@ export default class HttpFilter implements ExceptionFilter {
 
     response.status(status).json(
       Object.assign(responseException, {
-        path: request.url,
+        path: request.url + 'ff',
       }),
     );
   }
